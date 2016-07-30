@@ -161,6 +161,15 @@ end
 	
 	resources :departments, :except=>[:show, :destroy]
 
+#---------- member-introduction------------
+        get "about", to: "members#public"
+        resources :members
+        #get "about/edit", to: "members#index"
+        #get "about/edit/new", to: "members#new"
+        #get "about/edit/update", to: "members#edit"
+        #get "about/edit/show", to: "members#show"
+
+
 #---------- for chrome extension -----------
 	post "api/query_from_time_table"
 	post "api/query_from_cos_adm"

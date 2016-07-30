@@ -1,0 +1,13 @@
+<div style="margin-bottom:15px; "><img style="display:block; margin:auto;"  src="<%=modal_member.member_image.url%>" alt="missing" class="img-rounded" height="500" width="500"></div>
+<div style="margin-right:25px; margin-left:25px">
+<table class = "table table.striped" style="font-size:18px;">
+    <tr> <th width="200" style="text-align:center" >名字</th> <td><%=modal_member.name%></td> </tr>
+    <tr> <th width="200" style="text-align:center">暱稱</th> <td><%=modal_member.nickname%></td> </tr>
+    <tr> <th width="200" style="text-align:center">部門</th> <td><%=modal_member.job%></td> </tr>
+    <tr> <th width="200" style="text-align:center">科系</th> <td><%=modal_member.department%></td> </tr>
+    <tr> <th width="200" style="text-align:center">加入n+的原因</td> <td><%= simple_format(modal_member.motivation) %></td> </tr>
+    <tr> <th width="200" style="text-align:center">其他</th> <td><%=simple_format(modal_member.others)%></td> </tr>
+    <tr> <th width="200" style="text-align:center">fb連結</th> <td><a href="<%=modal_member.fb %>"><%=modal_member.fb%></a></td> </tr>
+    <tr> <th width="200" style="text-align:center">email</th> <td><%=modal_member.email%></td> </tr>
+</table>
+</div>

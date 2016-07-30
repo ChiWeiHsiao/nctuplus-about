@@ -1,0 +1,21 @@
+<h1>總表</h1>
+<%= link_to '新增成員', new_member_path, class:"btn btn-info", style:"font-size:20px; margin-top:10px; margin-bottom:10px;" %>
+<% @members.each do |position_name, position| %>
+  <h1><%=position_name%></h2>
+<table class = "table table-striped"> 
+  <tbody>
+  <%position.each do |p| %>
+      <tr>
+        <td width="10%">
+          <img src="<%=p.member_image.url%>" alt="找不到圖片OAO" height="50" width="50"></td>
+        <td width="60%" style="font-size:20px;"> <%= p.name%> </td>
+        <td align="right" width="50px" style="font-size:20px;"> <%= link_to '查看', member_path(p) %>  </td>
+        <td align="right" width="50px" style="font-size:20px;"> <%= link_to '編輯', edit_member_path(p) %>  </td>
+        <td align="right" width="50px" style="font-size:20px;"> <%= link_to '刪除', member_path(p), :method => :delete, :data => { :confirm => "Are you sure?" } %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+<%end%>
+
+

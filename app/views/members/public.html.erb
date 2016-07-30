@@ -1,0 +1,68 @@
+<style>
+.opacity div { transition: opacity: 1; }
+.opacity div:hover { opacity: 0.4; }
+</style>
+
+
+<div id="main-container" class="container bg-white" style="padding-left:100px; padding-right:150px; padding-bottom:100px;"> 
+  <h1 style="margin-top:30px; margin-bottom:40px;"> <big>♠ </big> 團隊介紹</h2>
+  <% @members.each do |position_name, position| %>
+
+    <h2 style="margin-top:30px; margin-bottom:40px;"><%=position_name%></h2>
+    <div class="row">
+      <% position.each do |p| %>
+	<div class=" col-sm-6 col-md-4" data-toggle="modal" data-target="#myModal_<%=p.id%>" >
+	  <div class="thumbnail " style="background-color: #FFF;" >
+	    <div class="opacity caption" style="text-align:center; margin: 0px auto;" >
+	      <br>
+	      <div>
+		<img class="img-rounded" style="max-width: 90%; max-height: 80%; display:block; margin:auto;" src="<%=p.member_image.url%>" alt="找不到圖片OAO"> 
+	      <h2><%=p.name%></h2>
+	      <p><%=p.nickname%></p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+      <%end%>
+    </div>
+
+  <%end%>
+</div>
+
+
+<% @members.each_value do |postion|%>
+  <% postion.each do |p|%>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal_<%=p.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+	<div class="modal-content">
+	  <div class="modal-header" style="text-align:center;">
+	    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	    <h1 class="modal-title" id="myModalLabel"><%=p.name%></h1>
+	  </div>
+	  <div class="modal-body">
+	    <!-- 內容 -->
+	    <% #=render "modal", :modal_member=>member%> 
+	    <div style="margin-bottom:15px; "><img style="display:block; margin:auto;"  src="<%=p.member_image.url%>" alt="missing" class="img-rounded" height="500" width="500"></div>
+	    <div style="margin-right:25px; margin-left:25px">
+	      <table class = "table table.striped" style="font-size:18px;">
+		<tr> <th width="200" style="text-align:center" >名字</th> <td><%=p.name%></td> </tr>
+		<tr> <th width="200" style="text-align:center">暱稱</th> <td><%=p.nickname%></td> </tr>
+		<tr> <th width="200" style="text-align:center">部門</th> <td><%=p.job%></td> </tr>
+		<tr> <th width="200" style="text-align:center">科系</th> <td><%=p.department%></td> </tr>
+		<tr> <th width="200" style="text-align:center">加入n+的原因</td> <td><%= simple_format(p.motivation) %></td> </tr>
+		<tr> <th width="200" style="text-align:center">其他</th> <td><%=simple_format(p.others)%></td> </tr>
+		<tr> <th width="200" style="text-align:center">fb連結</th> <td><a href="<%=p.fb %>"><%=p.fb%></a></td> </tr>
+		<tr> <th width="200" style="text-align:center">email</th> <td><%=p.email%></td> </tr>
+	      </table>
+	    </div>
+	  </div>
+	  <div class="modal-footer">
+	    <!-- 尾內容 -->
+	  </div>
+	</div>
+      </div>
+    </div>
+  <%end%>
+<%end%>
+

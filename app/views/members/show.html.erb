@@ -1,0 +1,23 @@
+<div id="main-container" class="container bg-white" style="padding-left:100px; padding-right:150px; padding-bottom:100px;">
+  <div style="text-align:center;"><h1><%= @member.name%></h1></div>
+  <div><img style="display:block; margin:auto;"  src="<%=@member.member_image.url%>" alt="missing" class="img-thumbnail" height="400" width="400"></div>
+
+  <div style="padding-left:150px; padding-right:150px; margin-top:20px;">
+    <table class = "table table.striped" style="font-size:20px; width:100%">
+      <tbody>
+	<tr> <td width="200">名字</td> <td><%=@member.name%></td> </tr>
+	<tr> <td width="200">暱稱</td> <td><%=@member.nickname%></td> </tr>
+	<tr> <td width="200">部門</td> <td><%=@member.job%></td> </tr>
+	<tr> <td width="200">科系</td> <td><%=@member.department%></td> </tr>
+	<tr> <td width="200">加入n+的原因</td> <td><%= simple_format(@member.motivation) %></td> </tr>
+	<tr> <td width="200">其他</td> <td><%=simple_format(@member.others)%></td> </tr>
+	<tr> <td width="200">fb連結</td> <td><a href="<%=@member.fb %>"><%=@member.fb%></a></td> </tr>
+	<tr> <td width="200">email</td> <td><%=@member.email%></td> </tr>
+      </tbody>
+    </table>
+    <br>
+    <div align='center'>
+      <%= link_to '回到總表' , members_path, class:'btn btn-success', style:'font-size:20px; margin-bottom:20px;' %> 
+    </div>
+  </div>
+</div>
